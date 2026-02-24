@@ -112,7 +112,7 @@ news-summarizer-ollama/
 
 Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/news-summarizer-ollama
+git clone https://github.com/AurelioGuilherme/news-summarizer-ollama
 cd news-summarizer-ollama
 ```
 
