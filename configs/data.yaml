@@ -1,0 +1,13 @@
+dataset:
+  name: csebuetnlp/xlsum
+  language: portuguese
+  train_size: 0.95
+  validation_size: 0.025
+  test_size: 0.025
+  min_article_chars: 180
+  min_summary_chars: 40
+  max_article_chars: 12000
+  seed: 42
+
+paths:
+  processed_dataset_dir: data/processed/xlsum_pt_instruction

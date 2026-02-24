@@ -1,0 +1,23 @@
+[project]
+name = "news-summarizer-ollama-workspace"
+version = "0.1.0"
+description = "Workspace for PT-BR news summarization fine-tuning and Ollama serving"
+requires-python = ">=3.11,<3.13"
+dependencies = []
+
+[tool.uv.workspace]
+members = [
+  "packages/*",
+  "apps/*",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu118" }
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true

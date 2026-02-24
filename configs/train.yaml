@@ -1,0 +1,63 @@
+model:
+  base_model_id: Qwen/Qwen2.5-0.5B-Instruct
+  max_seq_length: 512
+  load_in_4bit: false
+  bnb_4bit_quant_type: nf4
+  bnb_4bit_compute_dtype: float16
+
+lora:
+  r: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+
+training:
+  output_dir: artifacts/checkpoints
+  adapter_output_dir: artifacts/adapter/qwen2.5-0.5b-news-pt
+  report_dir: artifacts/reports
+  num_train_epochs: 2
+  learning_rate: 0.000005
+  warmup_ratio: 0.05
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16
+  gradient_checkpointing: false
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  logging_steps: 10
+  save_steps: 50
+  eval_steps: 50
+  save_total_limit: 2
+  seed: 42
+  fp16: false
+  bf16: false
+  optim: adamw_torch
+  lr_scheduler_type: cosine
+  max_train_samples: 600
+  max_eval_samples: 128
+
+data:
+  dataset_dir: data/processed/xlsum_pt_instruction
+  text_field: article
+  summary_field: summary
+  instruction_template: |
+    Voce e um assistente especialista em resumir noticias em portugues do Brasil.
+    Resuma a noticia abaixo de forma clara, fiel aos fatos e objetiva.
+
+    Noticia:
+    {article}
+
+    Resumo:
+  max_target_tokens: 140
+
+evaluation:
+  max_new_tokens: 100
+  num_beams: 4
+  length_penalty: 1.0
+  no_repeat_ngram_size: 3
+  do_sample: false
+  max_eval_generation_samples: 30

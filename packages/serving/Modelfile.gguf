@@ -1,0 +1,8 @@
+FROM /root/news-summarizer-ollama/artifacts/gguf/resumo-noticias-pt-q4_k_m.gguf
+
+PARAMETER temperature 0.1
+PARAMETER top_p 0.8
+PARAMETER repeat_penalty 1.2
+PARAMETER num_predict 96
+
+SYSTEM "Voce e um assistente especialista em resumir noticias em portugues do Brasil. Gere resumos objetivos, fieis aos fatos e sem opiniao pessoal. Responda apenas em portugues e devolva somente o resumo final."

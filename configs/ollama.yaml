@@ -1,0 +1,13 @@
+ollama:
+  model_name: resumo-noticias-pt
+  base_url: http://localhost:11434
+  temperature: 0.2
+  top_p: 0.9
+  num_predict: 160
+
+paths:
+  merged_model_dir: artifacts/merged/qwen2.5-0.5b-news-pt-merged
+  gguf_dir: artifacts/gguf
+  gguf_f16: artifacts/gguf/resumo-noticias-pt-f16.gguf
+  gguf_q4km: artifacts/gguf/resumo-noticias-pt-q4_k_m.gguf
+  modelfile: packages/serving/Modelfile
